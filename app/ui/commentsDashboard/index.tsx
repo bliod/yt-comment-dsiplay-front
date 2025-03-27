@@ -1,11 +1,31 @@
+"use client";
+
 import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
-import { FunctionComponent } from "react";
+import { FunctionComponent, SyntheticEvent, useState } from "react";
 import SectionCards from "./SectionCards";
 
 interface CommentsDashboardProps {}
 
 const CommentsDashboard: FunctionComponent<CommentsDashboardProps> = () => {
+  const [cards, setCards] = useState<Record<string, true>>({});
+  const [videoId, setVideoId] = useState("");
+
+  const handleAdd = (e: SyntheticEvent) => {
+    if (!videoId) {
+      return;
+    }
+    if (cards[videoId]!!) {
+      return;
+    }
+    setCards({ ...cards, [videoId]: true });
+  };
+  const handleRemove = (videoId: string) => {
+    const cardsState = { ...cards };
+    delete cardsState[videoId];
+    setCards(cardsState);
+  };
+  console.log(cards, "cards");
   return (
     <Box
       sx={{
@@ -26,17 +46,19 @@ const CommentsDashboard: FunctionComponent<CommentsDashboardProps> = () => {
       </Box>
       <Box display={"flex"} gap={1}>
         <TextField
-          label="Add YouTube link"
+          label="Add YouTube ID"
           variant="outlined"
           size="small"
           color="secondary"
           sx={{ flexBasis: "50%" }}
+          onChange={(e) => setVideoId(e.target.value)}
         />
         <Button
           size="small"
           variant="contained"
           color="secondary"
           sx={{ color: "white" }}
+          onClick={handleAdd}
         >
           Add
         </Button>
@@ -48,10 +70,10 @@ const CommentsDashboard: FunctionComponent<CommentsDashboardProps> = () => {
           flexGrow: 1,
         }}
       >
-        <Grid container spacing={2} sx={{ marginTop: 2 }}>
-          {[1, 1, 1, 1].map((_, index) => (
-            <Grid key={index} size={{ xs: 12, md: 6 }}>
-              <SectionCards />
+        <Grid container spacing={2} sx={{ marginTop: 2, width: "100%" }}>
+          {Object.keys(cards).map((videoId) => (
+            <Grid key={videoId} size={{ xs: 12, md: 6 }}>
+              <SectionCards videoId={videoId} closeCallback={handleRemove} />
             </Grid>
           ))}
         </Grid>

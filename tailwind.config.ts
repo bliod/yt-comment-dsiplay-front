@@ -17,7 +17,7 @@ const config: Config = {
           500: "#0070F3",
           600: "#2F6FEB",
         },
-        surfshark: {
+        myCustom: {
           teal: "#0dc5b4",
           red: "#ff4c6a",
         },

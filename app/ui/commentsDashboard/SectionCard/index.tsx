@@ -1,17 +1,18 @@
-import { Badge, Box, IconButton, Typography } from "@mui/material";
+import { Box, IconButton, Tooltip, Typography } from "@mui/material";
 import { FunctionComponent, useEffect, useState } from "react";
 import CommentListItem from "./commentListItem";
 import { IVideoCommentsDocument } from "@/app/lib/interfaces/IVideoComments";
 import CloseIcon from "@mui/icons-material/Close";
+import StorageIcon from "@mui/icons-material/Storage";
 
-interface SectionCardsProps {
+interface SectionCardProps {
   videoId: string;
   closeCallback: (videoId: string) => void;
 }
 
 export const dynamicParams = true;
 
-const SectionCards: FunctionComponent<SectionCardsProps> = ({
+const SectionCard: FunctionComponent<SectionCardProps> = ({
   videoId,
   closeCallback,
 }) => {
@@ -52,19 +53,29 @@ const SectionCards: FunctionComponent<SectionCardsProps> = ({
         alignItems={"center"}
         sx={{ p: 2, borderBottom: "1px solid #e0e0e0" }}
       >
-        <Box>{videoComments.videoId}</Box>
+        <Box display={"flex"} gap={2}>
+          <Box>{videoComments.videoId}</Box>
+          {videoComments.isFromDb && (
+            <Tooltip
+              title={"Comments are fetched from database"}
+              placement="top"
+            >
+              <StorageIcon color="error" />
+            </Tooltip>
+          )}
+        </Box>
         <IconButton size="small" onClick={() => closeCallback(videoId)}>
           <CloseIcon />
         </IconButton>
       </Box>
 
-      <Box sx={{ p: 3 }}>
-        {videoComments.comments.items.map((item) => (
-          <CommentListItem />
+      <Box display={"flex"} flexDirection={"column"} sx={{ p: 2, gap: 1 }}>
+        {videoComments.commentThread.items.map((item) => (
+          <CommentListItem item={item} key={item.id} />
         ))}
       </Box>
     </Box>
   );
 };
 
-export default SectionCards;
+export default SectionCard;

@@ -56,6 +56,6 @@ export interface IVideoCommentsDocument {
   _id: string;
   videoId: string;
   timestamp: Date;
-  comments: ICommentThreadsListResponse;
+  commentThread: ICommentThreadsListResponse;
   isFromDb: boolean;
 }

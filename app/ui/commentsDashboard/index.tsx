@@ -3,7 +3,7 @@
 import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import { FunctionComponent, SyntheticEvent, useState } from "react";
-import SectionCards from "./SectionCards";
+import SectionCard from "./SectionCard";
 
 interface CommentsDashboardProps {}
 
@@ -25,7 +25,7 @@ const CommentsDashboard: FunctionComponent<CommentsDashboardProps> = () => {
     delete cardsState[videoId];
     setCards(cardsState);
   };
-  console.log(cards, "cards");
+
   return (
     <Box
       sx={{
@@ -73,7 +73,7 @@ const CommentsDashboard: FunctionComponent<CommentsDashboardProps> = () => {
         <Grid container spacing={2} sx={{ marginTop: 2, width: "100%" }}>
           {Object.keys(cards).map((videoId) => (
             <Grid key={videoId} size={{ xs: 12, md: 6 }}>
-              <SectionCards videoId={videoId} closeCallback={handleRemove} />
+              <SectionCard videoId={videoId} closeCallback={handleRemove} />
             </Grid>
           ))}
         </Grid>

@@ -77,7 +77,7 @@ export default function Navbar() {
             {/* Logo */}
             <Box sx={{ display: "flex", alignItems: "center", mr: 2 }}>
               <Typography variant="h6" fontWeight={"700"} color="secondary">
-                SinkFish
+                WalkMouse
               </Typography>
             </Box>
 
@@ -171,7 +171,7 @@ export default function Navbar() {
                   py: 1,
                 }}
               >
-                Get SinkFish
+                Get WalkMouse
               </Button>
             </Box>
           </Toolbar>

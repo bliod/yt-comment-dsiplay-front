@@ -1,6 +1,7 @@
-import { Button, Paper, TextField, Typography } from "@mui/material";
+import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import { FunctionComponent } from "react";
+import SectionCards from "./SectionCards";
 
 interface CommentsDashboardProps {}
 
@@ -43,12 +44,18 @@ const CommentsDashboard: FunctionComponent<CommentsDashboardProps> = () => {
       <Paper
         elevation={0}
         sx={{
-          background: "#F5F5F5",
           display: "flex",
           flexGrow: 1,
-          padding: 2,
         }}
-      ></Paper>
+      >
+        <Grid container spacing={2} sx={{ marginTop: 2 }}>
+          {[1, 1, 1, 1].map((_, index) => (
+            <Grid key={index} size={{ xs: 12, md: 6 }}>
+              <SectionCards />
+            </Grid>
+          ))}
+        </Grid>
+      </Paper>
     </Box>
   );
 };

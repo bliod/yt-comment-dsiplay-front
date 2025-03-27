@@ -7,7 +7,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 
 export const metadata: Metadata = {
-  title: "SinkFish Youtube Comments",
+  title: "WalkMouse Youtube Comments",
   description: "Access latest Youtube video comments",
 };
 

@@ -36,9 +36,9 @@ const config: Config = {
       },
     },
   },
-  corePlugins: {
-    preflight: false, // Prevents Tailwind from overriding MUI styles
-  },
-  plugins: [require("@tailwindcss/forms")],
+  // corePlugins: {
+  //   preflight: false, // Prevents Tailwind from overriding MUI styles
+  // },
+  // plugins: [require("@tailwindcss/forms")],
 };
 export default config;

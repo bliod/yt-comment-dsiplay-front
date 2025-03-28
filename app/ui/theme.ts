@@ -2,7 +2,6 @@
 import { createTheme } from "@mui/material/styles";
 import { inter } from "@/app/ui/fonts";
 
-// Custom theme to match Surfshark colors
 const theme = createTheme({
   palette: {
     primary: {

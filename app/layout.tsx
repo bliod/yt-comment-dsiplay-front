@@ -4,9 +4,10 @@ import Navbar from "./ui/navBar";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./ui/theme";
 import CssBaseline from "@mui/material/CssBaseline";
+import Box from "@mui/material/Box";
 
 export const metadata: Metadata = {
-  title: "Surfshark Youtube Comments",
+  title: "WalkMouse Youtube Comments",
   description: "Access latest Youtube video comments",
 };
 
@@ -20,10 +21,16 @@ export default function RootLayout({
       <body>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <div className="flex min-h-screen flex-col">
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              height: "100vh",
+            }}
+          >
             <Navbar />
             {children}
-          </div>
+          </Box>
         </ThemeProvider>
       </body>
     </html>

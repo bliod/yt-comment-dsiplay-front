@@ -76,7 +76,7 @@ const CommentsDashboard: FunctionComponent<CommentsDashboardProps> = () => {
             <EmptyState />
           ) : (
             Object.keys(cards).map((videoId) => (
-              <Grid key={videoId} size={{ xs: 12, md: 6 }}>
+              <Grid key={videoId} size={{ xs: 12, md: 6, xl: 4 }}>
                 <SectionCard videoId={videoId} closeCallback={handleRemove} />
               </Grid>
             ))

@@ -4,6 +4,7 @@ import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import { FunctionComponent, SyntheticEvent, useState } from "react";
 import SectionCard from "./SectionCard";
+import EmptyState from "./emptyState";
 
 interface CommentsDashboardProps {}
 
@@ -71,11 +72,15 @@ const CommentsDashboard: FunctionComponent<CommentsDashboardProps> = () => {
         }}
       >
         <Grid container spacing={2} sx={{ marginTop: 2, width: "100%" }}>
-          {Object.keys(cards).map((videoId) => (
-            <Grid key={videoId} size={{ xs: 12, md: 6 }}>
-              <SectionCard videoId={videoId} closeCallback={handleRemove} />
-            </Grid>
-          ))}
+          {Object.keys(cards).length === 0 ? (
+            <EmptyState />
+          ) : (
+            Object.keys(cards).map((videoId) => (
+              <Grid key={videoId} size={{ xs: 12, md: 6 }}>
+                <SectionCard videoId={videoId} closeCallback={handleRemove} />
+              </Grid>
+            ))
+          )}
         </Grid>
       </Paper>
     </Box>

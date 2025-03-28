@@ -1,4 +1,4 @@
-import { Box, IconButton, Tooltip, Typography } from "@mui/material";
+import { Box, IconButton, Skeleton, Tooltip, Typography } from "@mui/material";
 import { FunctionComponent, useEffect, useState } from "react";
 import CommentListItem from "./commentListItem";
 import { IVideoCommentsDocument } from "@/app/lib/interfaces/IVideoComments";
@@ -31,10 +31,9 @@ const SectionCard: FunctionComponent<SectionCardProps> = ({
   }, []);
 
   if (!videoComments) {
-    return <Typography>No results</Typography>;
+    return <Skeleton variant="rounded" width={"100%"} height={"100%"} />;
   }
 
-  console.log(videoComments, "videoComments");
   return (
     <Box
       sx={{
